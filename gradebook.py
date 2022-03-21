@@ -1,4 +1,5 @@
 from enum import Enum
+import uuid
 
 
 class AliveStatus(Enum):
@@ -6,7 +7,7 @@ class AliveStatus(Enum):
     ALIVE = 1
 
 
-class Person:
+class Person():
     first_name = ''
     last_name = ''
     dob = ''
@@ -32,3 +33,39 @@ class Person:
         return new_status
 
 
+class Instructor(Person):
+    instructor_id = uuid.uuid4()
+
+    def __init__(self):
+        pass
+
+
+class Student(Person):
+    student_id = uuid.uuid4()
+
+    def __init__(self):
+        pass
+
+
+class ZipCodeStudent(Student):
+
+    def __init__(self):
+        pass
+
+
+class College(Student):
+
+    def __init__(self):
+        pass
+
+
+class Classroom:
+    students = []
+    instructors = []
+
+    def __init__(self):
+        pass
+
+
+student1 = Student()
+print(student1.student_id)
