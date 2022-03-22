@@ -41,7 +41,7 @@ class Instructor(Person):
 
 
 class Student(Person):
-    student_id = uuid4
+    student_id = uuid4()
 
     def __init__(self, first_name, last_name, dob, alive):
         super().__init__()
@@ -76,17 +76,20 @@ class Classroom:
         return self.instructors
 
     def add_student(self, student):
-        self.students.append(student.student_id)
+        self.students.append(f'Student_{student.first_name},{student.last_name}, {student.dob},\
+ {student.student_id}')
         return self.students
 
-    def remove_student(self):
+    def remove_student(self, student):
+        self.students.remove(f'Student_{student.first_name},{student.last_name}, {student.dob},\
+{student.student_id}')
         return self.students
 
     def print_instructors(self):
         print(f'{self.instructors}')
 
     def print_students(self):
-        print(self.students)
+        print(f'{self.students}')
 
 
 instructor1 = Instructor(first_name='Allen', last_name='Chung', dob='9/27/91', alive=1)
@@ -101,4 +104,17 @@ classroom1.add_instructor(instructor1)
 print(classroom1.print_instructors())
 classroom1.remove_instructor(instructor1)
 print(classroom1.print_instructors())
+
+student1 = Student(first_name='Allen', last_name='Chung', dob='9/27/91', alive=1)
+
+student1.update_first_name('Allen')
+student1.update_last_name('Chung')
+student1.update_dob('9/27/01')
+student1.update_status(1)
+
+classroom2 = Classroom()
+classroom2.add_student(student1)
+print(classroom2.print_students())
+#classroom2.remove_student(student1)
+#print(classroom2.print_students())
 
