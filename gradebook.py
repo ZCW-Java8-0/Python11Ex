@@ -66,29 +66,39 @@ class Classroom:
         pass
 
     def add_instructor(self, instructor):
-        self.instructors.append(instructor.instructor_id)
+        self.instructors.append(f'Instructor_{instructor.first_name},{instructor.last_name}, {instructor.dob},\
+ {instructor.instructor_id}')
         return self.instructors
 
-    def remove_instructor(self):
+    def remove_instructor(self, instructor):
+        self.instructors.remove(f'Instructor_{instructor.first_name},{instructor.last_name}, {instructor.dob},\
+ {instructor.instructor_id}')
         return self.instructors
 
-    def add_student(self):
+    def add_student(self, student):
+        self.students.append(student.student_id)
         return self.students
 
     def remove_student(self):
         return self.students
 
     def print_instructors(self):
-        print(f'Instructor: {self.instructors}')
+        print(f'{self.instructors}')
 
     def print_students(self):
         print(self.students)
 
 
-instructor1 = Instructor('Allen', 'Chung', '9/27/91', 1)
+instructor1 = Instructor(first_name='Allen', last_name='Chung', dob='9/27/91', alive=1)
 
-print(instructor1.update_first_name('Allen'))
+instructor1.update_first_name('Allen')
+instructor1.update_last_name('Chung')
+instructor1.update_dob('9/27/01')
+instructor1.update_status(1)
 
 classroom1 = Classroom()
 classroom1.add_instructor(instructor1)
 print(classroom1.print_instructors())
+classroom1.remove_instructor(instructor1)
+print(classroom1.print_instructors())
+
