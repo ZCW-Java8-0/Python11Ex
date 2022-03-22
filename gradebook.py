@@ -8,54 +8,52 @@ class AliveStatus(Enum):
 
 
 class Person:
-    first_name = ''
-    last_name = ''
-    dob = ''
-    alive = AliveStatus
-
-    def __init__(self):
-        pass
+    def __init__(self, first_name, last_name, dob, AliveStatus):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.dob = dob
+        self.alive = AliveStatus
 
     def update_first_name(self, first_name):
         self.first_name = first_name
         return first_name
 
-    def update_last_name(self, new_last_name):
-        self.last_name = new_last_name
-        return new_last_name
+    def update_last_name(self, last_name):
+        self.last_name = last_name
+        return last_name
 
-    def update_dob(self, new_dob):
-        self.dob = new_dob
-        return new_dob
+    def update_dob(self, dob):
+        self.dob = dob
+        return dob
 
-    def update_status(self, new_status):
-        self.alive = new_status
-        return new_status
+    def update_status(self, status):
+        self.alive = status
+        return status
 
 
 class Instructor(Person):
     instructor_id = uuid4()
 
     def __init__(self, first_name, last_name, dob, alive):
-        super().__init__()
+        super().__init__(first_name, last_name, dob, alive)
 
 
 class Student(Person):
     student_id = uuid4()
 
     def __init__(self, first_name, last_name, dob, alive):
-        super().__init__()
+        super().__init__(first_name, last_name, dob, alive)
 
 
 class ZipCodeStudent(Student):
 
     def __init__(self, first_name, last_name, dob, alive):
-        super().__init__()
+        super().__init__(first_name, last_name, dob, alive)
 
 
 class College(Student):
     def __init__(self, first_name, last_name, dob, alive):
-        super().__init__()
+        super().__init__(first_name, last_name, dob, alive)
 
 
 class Classroom:
@@ -94,27 +92,17 @@ class Classroom:
 
 instructor1 = Instructor(first_name='Allen', last_name='Chung', dob='9/27/91', alive=1)
 
-instructor1.update_first_name('Allen')
-instructor1.update_last_name('Chung')
-instructor1.update_dob('9/27/01')
-instructor1.update_status(1)
-
 classroom1 = Classroom()
 classroom1.add_instructor(instructor1)
 print(classroom1.print_instructors())
 classroom1.remove_instructor(instructor1)
 print(classroom1.print_instructors())
 
-student1 = Student(first_name='Allen', last_name='Chung', dob='9/27/91', alive=1)
+student1 = Student(first_name='Kira', last_name='Sy', dob='1/1/2000', alive=1)
 
-student1.update_first_name('Allen')
-student1.update_last_name('Chung')
-student1.update_dob('9/27/01')
-student1.update_status(1)
 
 classroom2 = Classroom()
 classroom2.add_student(student1)
 print(classroom2.print_students())
 #classroom2.remove_student(student1)
 #print(classroom2.print_students())
-
