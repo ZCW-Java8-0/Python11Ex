@@ -64,22 +64,22 @@ class Classroom:
         pass
 
     def add_instructor(self, instructor):
-        self.instructors.append(f'Instructor_{instructor.first_name},{instructor.last_name}, {instructor.dob},\
+        self.instructors.append(f'Instructor_{instructor.first_name} {instructor.last_name}, {instructor.dob},\
  {instructor.instructor_id}')
         return self.instructors
 
     def remove_instructor(self, instructor):
-        self.instructors.remove(f'Instructor_{instructor.first_name},{instructor.last_name}, {instructor.dob},\
+        self.instructors.remove(f'Instructor_{instructor.first_name} {instructor.last_name}, {instructor.dob},\
  {instructor.instructor_id}')
         return self.instructors
 
     def add_student(self, student):
-        self.students.append(f'Student_{student.first_name},{student.last_name}, {student.dob},\
+        self.students.append(f'Student_{student.first_name} {student.last_name}, {student.dob},\
  {student.student_id}')
         return self.students
 
     def remove_student(self, student):
-        self.students.remove(f'Student_{student.first_name},{student.last_name}, {student.dob},\
+        self.students.remove(f'Student_{student.first_name} {student.last_name}, {student.dob},\
 {student.student_id}')
         return self.students
 
@@ -90,7 +90,7 @@ class Classroom:
         print(f'{self.students}')
 
 
-instructor1 = Instructor(first_name='Allen', last_name='Chung', dob='9/27/91', alive=1)
+instructor1 = Instructor('Allen', 'Chung', '9/27/91', 1)
 
 classroom1 = Classroom()
 classroom1.add_instructor(instructor1)
@@ -98,7 +98,7 @@ print(classroom1.print_instructors())
 classroom1.remove_instructor(instructor1)
 print(classroom1.print_instructors())
 
-student1 = Student(first_name='Kira', last_name='Sy', dob='1/1/2000', alive=1)
+student1 = Student('Kira', 'Sy', '1/1/2000', 1)
 
 
 classroom2 = Classroom()
